@@ -1,15 +1,24 @@
-import React from 'react';
+import React from "react";
 
-const ColourSelector = (props) => {
-  const { config, selectNextBackground } = props;
-  const { classname, label, background } = config;
+const ColourSelector = ({ config, selectNextBackground }) => {
+  const handleClick = () => {
+    selectNextBackground({ background: config.background });
+  };
 
   return (
     <button
-      className={classname} // Use classname from config
-      onClick={() => selectNextBackground({ background })}
+      className={config.classname}
+      onClick={handleClick}
+      style={{
+        background: config.background,
+        color: "white",
+        padding: "10px 20px",
+        margin: "5px",
+        border: "none",
+        cursor: "pointer",
+      }}
     >
-      {label} {/* Use label from config */}
+      {config.label}
     </button>
   );
 };
